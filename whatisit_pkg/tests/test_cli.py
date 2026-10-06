@@ -50,6 +50,10 @@ class TestQueryArgsHandParsing:
         args2 = cli.QueryArgs(["--port=8080", "ls"])
         assert args2.port == 8080
         assert args2.words == ["ls"]
+        # Short form with equals: -n=3
+        args3 = cli.QueryArgs(["-n=3", "list", "files"])
+        assert args3.num == 3
+        assert args3.words == ["list", "files"]
 
     def test_dash_n3_glued_form(self):
         args = cli.QueryArgs(["-n3", "compress", "this", "folder"])
